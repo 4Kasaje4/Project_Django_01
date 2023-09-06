@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block hrefnav1 %}{%  url 'form' %}{% endblock %}
+{% block titlenav1 %}Form{% endblock %}
+{% block hrefnav2 %}{%  url 'about' %}{% endblock %}
+{% block titlenav2 %}About me{% endblock %}
+{% block content %}
+    {% for i in messages %}
+        <div class="alert alert-success" role="alert">
+            {{ i }}
+        </div>
+    {% endfor %}
+    {% if num != 0 %}
+        <table class="table table-success table-striped  rounded">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">ID</th>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Update on</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in person %}
+                    <tr class="text-center">
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.firstname }}</td>
+                        <td>{{ i.lastname }}</td>
+                        <td>{{ i.date }}</td>
+                        <td><a class="btn btn-warning" href="edit/{{i.id}}">Edit</a></td>
+                        <td><a class="btn btn-danger" href="delete/{{i.id}}" onclick="return confirm('Are you sure ? ')">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    {% else %}
+        <p class="text-center fs-1 position-absolute top-50 start-50 translate-middle">No Data</p>
+    {% endif%}
+
+{% endblock %}

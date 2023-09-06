@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Edit {% endblock %}
+{% block hrefnav1 %}{%  url 'index' %}{% endblock %}
+{% block titlenav1 %}Home{% endblock %}
+{% block hrefnav2 %}{%  url 'about' %}{% endblock %}
+{% block titlenav2 %}About me{% endblock %}
+
+{% block content %}
+<div class="text-center m-lg-5 fs-1 fw">กรอกข้อมูลสมาชิก</div>
+<div class="container w-75 position-absolute top-50 start-50 translate-middle bg-light rounded p-2">
+<form method="post"> 
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label " >Firstname</label>
+      <input type="text" class="form-control"  name="firstname" required value="{{person_id.firstname}}">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label ">Lastname</label>
+      <input type="text" class="form-control"  name="Lastname" required value="{{person_id.lastname}}">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label ">Age</label>
+      <input type="number" class="form-control"  name="age" required value="{{person_id.id}}">
+    </div>
+    <button type="submit" class="btn btn-success">Edit</button>
+  </form>
+</div>
+
+
+{% endblock %}
